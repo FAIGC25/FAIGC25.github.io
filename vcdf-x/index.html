@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Paper Title | Conference 2025</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <style>
+    /* Google Sans + pure black everywhere */
+    body,
+    .title, .subtitle, .content,
+    h1, h2, h3, h4, h5, h6, p, a, span, li, td, th, button, input, label, pre {
+      font-family: 'Google Sans', 'Noto Sans', sans-serif !important;
+      color: #000 !important;
+    }
+
+    .navbar {
+      background-color: #fff;
+      border-bottom: 1px solid #eee;
+    }
+    .navbar-brand .navbar-item {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    /* HERO */
+    .hero { padding-top: 3rem; }
+
+    .publication-title {
+      font-family: 'Google Sans', sans-serif !important;
+      font-size: 2.5rem !important;
+      font-weight: 700 !important;
+      line-height: 1.25 !important;
+      color: #000 !important;
+    }
+
+    .publication-authors {
+      font-size: 1.1rem;
+    }
+    .publication-authors a {
+      color: #000 !important;
+      font-weight: 500;
+    }
+    .publication-authors a:hover { text-decoration: underline; }
+
+    .author-block {
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+
+    .publication-venue {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #000 !important;
+    }
+
+    /* LINK BUTTONS */
+    .publication-links { margin-top: 1.5rem; }
+    .publication-links .button {
+      font-family: 'Google Sans', sans-serif !important;
+      color: #000 !important;
+      border-color: #000 !important;
+      border-radius: 4px;
+      font-weight: 500;
+      background: transparent;
+      margin: 0.25rem;
+      transition: background .15s, color .15s;
+    }
+    .publication-links .button:hover {
+      background: #000 !important;
+      color: #fff !important;
+    }
+    .publication-links .button .icon { color: inherit !important; }
+    .publication-links .button span { color: inherit !important; }
+
+    /* TEASER */
+    .teaser-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .teaser-cell {
+      aspect-ratio: 1;
+      background: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid #ddd;
+      gap: 6px;
+    }
+    .teaser-cell:last-child { border-right: none; }
+    .teaser-cell span { font-size: 0.85rem; color: #555 !important; }
+    .teaser-cell .cell-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #999 !important;
+    }
+    .teaser-caption {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #000 !important;
+      text-align: center;
+    }
+
+    /* SECTIONS */
+    .section { padding: 3rem 1.5rem; }
+    .section.is-light { background-color: #f8f8f8; }
+
+    .section-heading {
+      font-size: 1.75rem !important;
+      font-weight: 700 !important;
+      color: #000 !important;
+      border-bottom: 2px solid #000;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.25rem !important;
+    }
+
+    /* VIDEO */
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    .video-placeholder {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      gap: 12px;
+    }
+    .video-placeholder i { font-size: 3rem; color: #555 !important; }
+    .video-placeholder span { color: #888 !important; font-size: 0.9rem; }
+
+    /* RESULTS */
+    .result-img-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: #ebebeb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      color: #888 !important;
+      border: 1px solid #ddd;
+      margin-bottom: 0.5rem;
+    }
+    .result-caption {
+      font-size: 0.85rem;
+      color: #000 !important;
+      text-align: center;
+    }
+
+    /* TABLE */
+    table.comparison-table {
+      width: 100%;
+      font-size: 0.9rem;
+      border-collapse: collapse;
+    }
+    .comparison-table th {
+      font-weight: 700;
+      border-bottom: 2px solid #000;
+      padding: 8px 12px;
+      text-align: center;
+      color: #000 !important;
+    }
+    .comparison-table td {
+      border-bottom: 1px solid #ddd;
+      padding: 8px 12px;
+      text-align: center;
+      color: #000 !important;
+    }
+    .comparison-table tr.ours td {
+      font-weight: 700;
+      background: #f0f0f0;
+    }
+    .comparison-table td.best { text-decoration: underline; }
+
+    /* BIBTEX */
+    .bibtex-container { position: relative; }
+    pre.bibtex {
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      overflow-x: auto;
+      white-space: pre;
+      font-family: 'Courier New', monospace !important;
+      color: #000 !important;
+    }
+    .copy-bibtex {
+      position: absolute;
+      top: 10px; right: 10px;
+      font-family: 'Google Sans', sans-serif !important;
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      background: #fff;
+      cursor: pointer;
+      color: #000 !important;
+    }
+    .copy-bibtex:hover { background: #000; color: #fff !important; }
+
+    /* FOOTER */
+    footer.footer {
+      background: #fff;
+      border-top: 1px solid #eee;
+      padding: 2rem;
+    }
+    footer .content { text-align: center; }
+    footer p { font-size: 0.85rem; color: #555 !important; }
+    footer a { color: #000 !important; text-decoration: underline; }
+
+    /* MISC */
+    .icon { color: #000 !important; }
+    strong { color: #000 !important; }
+
+    @media (max-width: 768px) {
+      .publication-title { font-size: 1.6rem !important; }
+      .teaser-grid { grid-template-columns: repeat(2, 1fr); }
+      .teaser-cell:nth-child(2) { border-right: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="#">Emotion Research</a>
+  </div>
+</nav>
+
+<!-- HERO / TITLE -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-1 publication-title">
+            VCDF-X: A Multimodal Explainable Video Conferencing <br>Deepfake Dataset and Benchmark
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="#">Author1</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="#">Author1</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="#">Ilya Makarov</a><sup>1,3</sup>,</span>
+            <span class="author-block"><a href="#">Andrey Savchenko</a><sup>1,4</sup></span>
+            <span class="author-block"><a href="#">Author3</a><sup>1,5</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors" style="margin-top:0.5rem;">
+            <span class="author-block"><sup>1</sup>ISP RAS,&nbsp;</span>
+            <span class="author-block"><sup>2</sup>University,&nbsp;</span>
+            <span class="author-block"><sup>3</sup>AIRI,&nbsp;</span>
+            <span class="author-block"><sup>4</sup>Sber AI Lab,&nbsp;</span>
+            <span class="author-block"><sup>5</sup>Research Center</span>
+          </div>
+
+          <!--
+          <div style="margin-top:0.75rem;">
+            <span class="publication-venue">...</span>
+          </div>
+          -->
+          <!--
+          <div class="publication-links">
+            <a href="#" class="button is-outlined">
+              <span class="icon"><i class="fas fa-file-pdf"></i></span>
+              <span>Paper</span>
+            </a>
+            -->
+            <!--
+            <a href="#" class="button is-outlined">
+              <span class="icon"><i class="ai ai-arxiv"></i></span>
+              <span>arXiv</span>
+            </a>
+            -->
+            <!--
+            <a href="#" class="button is-outlined">
+              <span class="icon"><i class="fab fa-youtube"></i></span>
+              <span>Video</span>
+            </a>
+            -->
+
+            <a href="#" class="button is-outlined">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>Code</span>
+            </a>
+
+            <a href="#" class="button is-outlined">
+              <span class="icon"><i class="fas fa-database"></i></span>
+              <span>Dataset</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEASER FIGURE -->
+<section class="section" style="padding-top:0;">
+  <div class="container is-max-desktop">
+    <div class="teaser-grid">
+      <div class="teaser-cell">
+        <span>Input</span>
+        <span class="cell-label">source</span>
+      </div>
+      <div class="teaser-cell">
+        <span>Baseline</span>
+        <span class="cell-label">prior method</span>
+      </div>
+      <div class="teaser-cell">
+        <span>Ours</span>
+        <span class="cell-label">our result</span>
+      </div>
+      <div class="teaser-cell">
+        <span>Ground Truth</span>
+        <span class="cell-label">reference</span>
+      </div>
+    </div>
+    <p class="teaser-caption">
+      <strong>Figure 1.</strong> Replace this with your teaser figure. Our method achieves
+      state-of-the-art results with significant improvement over prior baselines.
+    </p>
+  </div>
+</section>
+
+<!-- ABSTRACT -->
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading">Abstract</h2>
+    <div class="content">
+      <p>We introduce <strong>VCDF-X</strong>, he first multimodal and
+explainable video conferencing deepfake dataset and benchmark,
+comprising over 10,000 videos synthesized by seven state-of-the-art
+generation pipelines spanning portrait animation (LiveAvatar, OVI,
+SadTalker), face swap (FaceFusion, DeepLiveCam, VisoMaster), and
+identity-driven generation (Dream-ID), with virtual background
+augmentation to faithfully emulate real-world conferencing conditions. </p>
+      <p>The defining contribution of <strong>VCDF-X</strong> ois its explainability-first annotation framework: every sample is paired with pixel-level
+manipulation masks, natural language forgery descriptions, facial
+action units (FAUs), eye gaze trajectories, depth maps, face mesh
+and contour geometry, and remote photoplethysmography (rPPG)
+signals - the richest per-sample annotation stack in the deepfake
+detection literature. This multimodal grounding enables not only stronger detection, but transparent, human-interpretable reasoning
+about forgery evidence. </p>
+      <p>We scope <strong>VCDF-X</strong> to the visual modality, reflecting how real-world conferencing deepfake tools operate.
+Building on these modalities, we propose a novel explainable multimodal detector that fuses physiological, geometric, appearance, and
+semantic cues, and present a comprehensive benchmark evaluating
+state-of-the-art detectors under in-distribution, cross-method, and
+cross-background generalization settings. </p>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<!--
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading">Video</h2>
+    <div class="video-wrapper">
+
+      <div class="video-placeholder">
+        <i class="fab fa-youtube"></i>
+        <span>Add your YouTube embed URL</span>
+      </div>
+    </div>
+  </div>
+</section>
+-->     <!-- Replace with: <iframe src="https://www.youtube.com/embed/YOUR_ID" allowfullscreen></iframe> -->
+
+<!-- METHOD -->
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading">Method</h2>
+    <div style="background:#e8e8e8; border:1px solid #ddd; border-radius:6px; aspect-ratio:16/6; display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem;">
+      <span style="color:#aaa; font-size:0.9rem;">Replace with your pipeline / architecture diagram</span>
+    </div>
+    <div class="content">
+      <p><strong>Overview.</strong> Given [input], our method produces [output] via a three-stage pipeline.
+      We first [Stage 1]. Then [Stage 2]. Finally, [Stage 3] to produce the final output.</p>
+      <p>The core insight is [key idea], allowing us to [advantage] without [costly step],
+      contrasting with [prior work] which requires [expensive/brittle requirement].</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading">Results</h2>
+    <p style="margin-bottom:1.5rem;">Qualitative comparison with state-of-the-art methods on [Dataset Name].</p>
+    <div class="columns">
+      <div class="column">
+        <div class="result-img-placeholder">Result A</div>
+        <p class="result-caption"><strong>Scene 1.</strong> Description of result.</p>
+      </div>
+      <div class="column">
+        <div class="result-img-placeholder">Result B</div>
+        <p class="result-caption"><strong>Scene 2.</strong> Description of result.</p>
+      </div>
+      <div class="column">
+        <div class="result-img-placeholder">Result C</div>
+        <p class="result-caption"><strong>Scene 3.</strong> Description of result.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUANTITATIVE -->
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading">Quantitative Comparison</h2>
+    <p style="margin-bottom:1.25rem;">Comparison on [Dataset]. Best results are <u>underlined</u>.</p>
+    <div style="overflow-x:auto;">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Method</th>
+            <th>PSNR ↑</th>
+            <th>SSIM ↑</th>
+            <th>LPIPS ↓</th>
+            <th>FPS ↑</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:left;">Baseline A (CVPR '23)</td>
+            <td>28.4</td><td>0.891</td><td>0.142</td><td>0.3</td>
+          </tr>
+          <tr>
+            <td style="text-align:left;">Baseline B (ICCV '23)</td>
+            <td>30.1</td><td>0.912</td><td>0.118</td><td>1.2</td>
+          </tr>
+          <tr>
+            <td style="text-align:left;">Baseline C (NeurIPS '24)</td>
+            <td>31.6</td><td>0.924</td><td>0.101</td><td>8.5</td>
+          </tr>
+          <tr class="ours">
+            <td style="text-align:left;"><strong>Ours</strong></td>
+            <td class="best"><u>33.8</u></td>
+            <td class="best"><u>0.947</u></td>
+            <td class="best"><u>0.079</u></td>
+            <td class="best"><u>32.0</u></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- BIBTEX -->
+<!--
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading">BibTeX</h2>
+    <p style="margin-bottom:1rem;">If you find this work useful, please cite:</p>
+    <div class="bibtex-container">
+<pre class="bibtex">@inproceedings{authorname2025method,
+  title     = {Your Paper Title: A Novel Approach to Solving Hard Problems},
+  author    = {One, Author and Two, Author and Three, Author and Four, Author},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2025},
+  url       = {https://arxiv.org/abs/2025.XXXXX}
+}</pre>
+      <button class="copy-bibtex" onclick="copyBib(this)">Copy</button>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- ACKNOWLEDGEMENTS -->
+<!--
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading">Acknowledgements</h2>
+    <div class="content">
+      <p>This work was supported by [Funding Agency] under Grant No. XXXXXXX.
+      We thank [collaborators] for helpful discussions.
+      Compute provided by [institution / cloud provider].
+    </div>
+  </div>
+</section>
+-->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="content">
+    <p>© 2026 <!--  <a href="#">Paper</a> · <a href="#">Code</a> · <a href="#">arXiv</a>--></p>
+    <p>Website source adapted from <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies</a>.
+    Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</p>
+  </div>
+</footer>
+
+<script>
+  function copyBib(btn) {
+    const pre = btn.previousElementSibling;
+    navigator.clipboard.writeText(pre.textContent.trim()).then(() => {
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 2000);
+    });
+  }
+</script>
+
+</body>
+</html>
