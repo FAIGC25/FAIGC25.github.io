@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Paper Title | Conference 2025</title>
+  <title>VCDF-X: A Multimodal Explainable Video Conferencing Deepfake Dataset and Benchmark</title>
+  <meta name="description" content="VCDF-X: the first multimodal video conferencing deepfake dataset with 13,768 clips, 9 generation pipelines, and 8 annotation modalities.">
 
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
   <style>
-    /* Google Sans + pure black everywhere */
     body,
     .title, .subtitle, .content,
     h1, h2, h3, h4, h5, h6, p, a, span, li, td, th, button, input, label, pre {
@@ -28,7 +29,6 @@
       font-size: 1.1rem;
     }
 
-    /* HERO */
     .hero { padding-top: 3rem; }
 
     .publication-title {
@@ -39,9 +39,7 @@
       color: #000 !important;
     }
 
-    .publication-authors {
-      font-size: 1.1rem;
-    }
+    .publication-authors { font-size: 1.05rem; }
     .publication-authors a {
       color: #000 !important;
       font-weight: 500;
@@ -50,7 +48,7 @@
 
     .author-block {
       display: inline-block;
-      margin-right: 0.5rem;
+      margin-right: 0.25rem;
     }
 
     .publication-venue {
@@ -59,7 +57,6 @@
       color: #000 !important;
     }
 
-    /* LINK BUTTONS */
     .publication-links { margin-top: 1.5rem; }
     .publication-links .button {
       font-family: 'Google Sans', sans-serif !important;
@@ -78,32 +75,6 @@
     .publication-links .button .icon { color: inherit !important; }
     .publication-links .button span { color: inherit !important; }
 
-    /* TEASER */
-    .teaser-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    .teaser-cell {
-      aspect-ratio: 1;
-      background: #f2f2f2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border-right: 1px solid #ddd;
-      gap: 6px;
-    }
-    .teaser-cell:last-child { border-right: none; }
-    .teaser-cell span { font-size: 0.85rem; color: #555 !important; }
-    .teaser-cell .cell-label {
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: #999 !important;
-    }
     .teaser-caption {
       margin-top: 1rem;
       font-size: 0.9rem;
@@ -111,7 +82,7 @@
       text-align: center;
     }
 
-    .title-infographic {
+    .figure-full {
       display: block;
       width: 100%;
       max-width: 100%;
@@ -120,7 +91,6 @@
       border: 1px solid #ddd;
     }
 
-    /* SECTIONS */
     .section { padding: 3rem 1.5rem; }
     .section.is-light { background-color: #f8f8f8; }
 
@@ -133,80 +103,256 @@
       margin-bottom: 1.25rem !important;
     }
 
-    /* VIDEO */
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
+    .subsection-heading {
+      font-size: 1.25rem !important;
+      font-weight: 700 !important;
+      color: #000 !important;
+      margin-top: 1.5rem !important;
+      margin-bottom: 0.75rem !important;
+    }
+
+    .figure-lead {
+      font-size: 0.95rem !important;
+      line-height: 1.65 !important;
+      margin-bottom: 0.85rem !important;
+      max-width: 48rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .figure-center-narrow {
+      display: block;
+      max-width: 640px;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
       border-radius: 6px;
       border: 1px solid #ddd;
     }
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: 0;
-    }
-    .video-placeholder {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: #111;
-      gap: 12px;
-    }
-    .video-placeholder i { font-size: 3rem; color: #555 !important; }
-    .video-placeholder span { color: #888 !important; font-size: 0.9rem; }
 
-    /* RESULTS */
-    .result-img-placeholder {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: #ebebeb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 4px;
-      font-size: 0.85rem;
-      color: #888 !important;
-      border: 1px solid #ddd;
-      margin-bottom: 0.5rem;
+    /* Statistics figure carousel (Swiper, fade — no horizontal slide strip) */
+    .statistics-carousel {
+      margin-top: 1.25rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      background: #fafafa;
+      padding: 0;
+      overflow: hidden;
     }
-    .result-caption {
-      font-size: 0.85rem;
+    .statistics-swiper {
+      padding: 1.25rem 2.75rem 3.75rem;
+      overflow: hidden;
+      --swiper-navigation-size: 28px;
+      --swiper-navigation-top-offset: 48%;
+    }
+    .statistics-swiper.swiper-fade .swiper-slide {
+      pointer-events: none;
+    }
+    .statistics-swiper.swiper-fade .swiper-slide-active {
+      pointer-events: auto;
+    }
+    .statistics-swiper .swiper-wrapper {
+      align-items: flex-start;
+    }
+    .statistics-swiper .swiper-slide {
+      box-sizing: border-box;
+      padding: 0.35rem 0 1.25rem;
+      height: auto;
+      overflow: hidden;
+    }
+    .statistics-swiper .stat-slide-inner {
+      padding-bottom: 0.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .statistics-swiper .swiper-pagination {
+      bottom: 14px !important;
+      margin-top: 0;
+    }
+    .statistics-swiper .stat-slide-columns.columns {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      margin-top: 0.5rem;
+      column-gap: 2.5rem;
+      row-gap: 1.5rem;
+    }
+    .statistics-swiper .stat-slide-columns .column {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+    .statistics-swiper .figure-caption {
+      margin-top: 0.85rem;
+      margin-bottom: 0.35rem;
+    }
+    /* Explicit panel classes (nth-child broke with Swiper DOM quirks) */
+    .statistics-swiper .stat-slide--1 .stat-slide-inner {
+      padding-bottom: 2.5rem !important;
+    }
+    .statistics-swiper .stat-slide--2,
+    .statistics-swiper .stat-slide--5 {
+      padding-top: 2rem !important;
+    }
+    .statistics-swiper .stat-slide--4 .stat-slide-inner {
+      padding-bottom: 2.5rem !important;
+    }
+    .statistics-swiper .stat-slide-figure-gap {
+      margin-top: 2rem !important;
+    }
+    .statistics-swiper .swiper-button-prev,
+    .statistics-swiper .swiper-button-next {
+      color: #000 !important;
+      opacity: 0.85;
+    }
+    .statistics-swiper .swiper-button-prev:hover,
+    .statistics-swiper .swiper-button-next:hover {
+      opacity: 1;
+    }
+    .statistics-swiper .swiper-button-disabled {
+      opacity: 0.25 !important;
+    }
+    .statistics-swiper .swiper-pagination-bullet {
+      background: #000;
+      opacity: 0.25;
+    }
+    .statistics-swiper .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
+    .stat-slide-inner {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    .stat-slide-title {
+      font-size: 1.08rem !important;
+      font-weight: 700 !important;
+      color: #000 !important;
+      text-align: center;
+      margin: 0 0 0.65rem !important;
+    }
+    .statistics-swiper .figure-lead {
+      margin-bottom: 1rem !important;
+    }
+    @media (max-width: 768px) {
+      .statistics-swiper {
+        padding: 1rem 2rem 2.75rem;
+      }
+    }
+
+    /* Video carousel (after Figure 3) */
+    .video-carousel-wrap {
+      margin: 2rem 0 1.5rem;
+    }
+    .video-carousel-lead {
+      font-size: 0.95rem !important;
+      line-height: 1.6 !important;
+      margin-bottom: 1rem !important;
+      max-width: 40rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .video-carousel {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      background: #fafafa;
+      overflow: hidden;
+    }
+    .video-swiper {
+      padding: 1rem 2.75rem 3rem;
+      overflow: hidden;
+      --swiper-navigation-size: 28px;
+    }
+    .video-swiper .swiper-slide {
+      box-sizing: border-box;
+    }
+    .video-slide-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 0.5rem;
+    }
+    .video-slide-inner video {
+      display: block;
+      width: 100%;
+      max-height: min(70vh, 520px);
+      border-radius: 6px;
+      background: #000;
+      border: 1px solid #ddd;
+    }
+    .video-slide-caption {
+      margin-top: 0.65rem;
+      font-size: 0.88rem;
+      text-align: center;
+      color: #000 !important;
+    }
+    .video-swiper .swiper-button-prev,
+    .video-swiper .swiper-button-next {
+      color: #000 !important;
+      opacity: 0.85;
+    }
+    .video-swiper .swiper-pagination-bullet {
+      background: #000;
+      opacity: 0.25;
+    }
+    .video-swiper .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
+    .video-swiper.swiper-fade .swiper-slide {
+      pointer-events: none;
+    }
+    .video-swiper.swiper-fade .swiper-slide-active {
+      pointer-events: auto;
+    }
+
+    .content p { line-height: 1.7; margin-bottom: 1rem; }
+    .content ul, .content ol { margin-bottom: 1rem; }
+    .content li { margin-bottom: 0.35rem; }
+
+    .figure-caption {
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
       color: #000 !important;
       text-align: center;
     }
 
-    /* TABLE */
-    table.comparison-table {
+    table.paper-table {
       width: 100%;
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       border-collapse: collapse;
+      margin-bottom: 1.5rem;
     }
-    .comparison-table th {
+    .paper-table th {
       font-weight: 700;
       border-bottom: 2px solid #000;
-      padding: 8px 12px;
+      padding: 6px 8px;
       text-align: center;
       color: #000 !important;
+      white-space: nowrap;
     }
-    .comparison-table td {
+    .paper-table td {
       border-bottom: 1px solid #ddd;
-      padding: 8px 12px;
+      padding: 6px 8px;
       text-align: center;
       color: #000 !important;
     }
-    .comparison-table tr.ours td {
+    .paper-table th:first-child,
+    .paper-table td:first-child { text-align: left; }
+    .paper-table tr.ours td {
       font-weight: 700;
       background: #f0f0f0;
     }
-    .comparison-table td.best { text-decoration: underline; }
+    .paper-table td.best { font-weight: 700; text-decoration: underline; }
+    .paper-table .midrule td { border-bottom: 2px solid #000; }
+    .paper-table .section-row td {
+      font-weight: 700;
+      text-align: center;
+      padding-top: 12px;
+      border-bottom: 1px solid #999;
+    }
 
-    /* BIBTEX */
+    .table-caption {
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+      color: #000 !important;
+    }
+
     .bibtex-container { position: relative; }
     pre.bibtex {
       background: #f4f4f4;
@@ -234,7 +380,6 @@
     }
     .copy-bibtex:hover { background: #000; color: #fff !important; }
 
-    /* FOOTER */
     footer.footer {
       background: #fff;
       border-top: 1px solid #eee;
@@ -244,14 +389,12 @@
     footer p { font-size: 0.85rem; color: #555 !important; }
     footer a { color: #000 !important; text-decoration: underline; }
 
-    /* MISC */
     .icon { color: #000 !important; }
     strong { color: #000 !important; }
 
     @media (max-width: 768px) {
       .publication-title { font-size: 1.6rem !important; }
-      .teaser-grid { grid-template-columns: repeat(2, 1fr); }
-      .teaser-cell:nth-child(2) { border-right: none; }
+      .paper-table { font-size: 0.72rem; }
     }
   </style>
 </head>
@@ -261,7 +404,7 @@
 <!-- NAVBAR -->
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="#">Emotion Research</a>
+    <a class="navbar-item" href="#">VCDF-X</a>
   </div>
 </nav>
 
@@ -273,60 +416,63 @@
         <div class="column has-text-centered">
 
           <h1 class="title is-1 publication-title">
-            VCDF-X: A Multimodal Explainable <br> Video Conferencing Deepfake Dataset <br> and Benchmark
+            VCDF-X: A Multimodal Explainable<br>Video Conferencing Deepfake Dataset<br>and Benchmark
           </h1>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><a href="#">Author1</a><sup>1</sup>,</span>
-            <span class="author-block"><a href="#">Author1</a><sup>2</sup>,</span>
-            <span class="author-block"><a href="#">Ilya Makarov</a><sup>1,3</sup>,</span>
-            <span class="author-block"><a href="#">Andrey Savchenko</a><sup>1,4</sup></span>
-            <span class="author-block"><a href="#">Author3</a><sup>1,5</sup></span>
+            <span class="author-block">Maria Razzhivina<sup>1</sup>,</span>
+            <span class="author-block">Ilya Orekhovsky<sup>2</sup>,</span>
+            <span class="author-block">Georgy Pokumin<sup>2</sup>,</span>
+            <span class="author-block">Daniil Storonkin<sup>3</sup>,</span>
+            <span class="author-block">Artyom Filatov<sup>4</sup>,</span>
+            <span class="author-block">Vadim Zenin<sup>4</sup>,</span>
+            <span class="author-block">Nikita Sidelnikov<sup>3</sup>,</span>
+            <span class="author-block">Yaroslav Sergaev<sup>1</sup>,</span>
+            <span class="author-block">Matvey Koltunov<sup>2</sup>,</span>
+            <span class="author-block">Rituparn Shukla<sup>5</sup>,</span>
+            <span class="author-block">Petr Ivanov<sup>1</sup>,</span>
+            <span class="author-block">Maria Shtark<sup>1</sup>,</span>
+            <span class="author-block">Ilya Makarov<sup>6</sup>,</span>
+            <span class="author-block">Andrey Savchenko<sup>4</sup></span>
           </div>
 
-          <div class="is-size-5 publication-authors" style="margin-top:0.5rem;">
-            <span class="author-block"><sup>1</sup>ISP RAS,&nbsp;</span>
-            <span class="author-block"><sup>2</sup>University,&nbsp;</span>
-            <span class="author-block"><sup>3</sup>AIRI,&nbsp;</span>
-            <span class="author-block"><sup>4</sup>Sber AI Lab,&nbsp;</span>
-            <span class="author-block"><sup>5</sup>Research Center</span>
+          <div class="is-size-6 publication-authors" style="margin-top:0.5rem;">
+            <span class="author-block"><sup>1</sup>Independent Researcher,&nbsp;</span>
+            <span class="author-block"><sup>2</sup>AI Talent Hub, ITMO University,&nbsp;</span>
+            <span class="author-block"><sup>3</sup>ITMO University,&nbsp;</span>
+            <span class="author-block"><sup>4</sup>HSE University,&nbsp;</span>
+            <span class="author-block"><sup>5</sup>Central University,&nbsp;</span>
+            <span class="author-block"><sup>6</sup>AIRI</span>
           </div>
 
-          <!--
           <div style="margin-top:0.75rem;">
-            <span class="publication-venue">...</span>
+            <span class="publication-venue">ACM Multimedia 2026</span>
           </div>
-          -->
-          <!--
+
           <div class="publication-links">
+            <!--
             <a href="#" class="button is-outlined">
               <span class="icon"><i class="fas fa-file-pdf"></i></span>
               <span>Paper</span>
             </a>
-            -->
-            <!--
             <a href="#" class="button is-outlined">
               <span class="icon"><i class="ai ai-arxiv"></i></span>
               <span>arXiv</span>
             </a>
             -->
-            <!--
-            <a href="#" class="button is-outlined">
-              <span class="icon"><i class="fab fa-youtube"></i></span>
-              <span>Video</span>
-            </a>
-            -->
-
             <a href="#" class="button is-outlined">
               <span class="icon"><i class="fab fa-github"></i></span>
-              <span>Code</span>
+              <span>Code (soon)</span>
             </a>
-
-            <a href="#" class="button is-outlined">
+            <a href="https://huggingface.co/datasets/SODA2207/vcdfx/tree/main" class="button is-outlined" target="_blank" rel="noopener noreferrer">
               <span class="icon"><i class="fas fa-database"></i></span>
               <span>Dataset</span>
             </a>
           </div>
+          <p class="is-size-7 has-text-grey" style="margin-top:0.75rem;max-width:36rem;margin-left:auto;margin-right:auto;">
+            The Hugging Face release is password-protected. How to request access (contact, etc.): <em>TODO</em>.
+            <!-- TODO: replace with real contact and instructions -->
+          </p>
 
         </div>
       </div>
@@ -338,17 +484,12 @@
 <section class="section" style="padding-top:0;">
   <div class="container is-max-desktop">
     <figure class="has-text-centered" style="margin:0;">
-      <img
-        src="../assets/title_anonymized.png"
-        alt="VCDF-X overview: modalities, data manipulation types, generation methods, demographic diversity, and real vs. fake examples"
-        class="title-infographic"
-        width="1024"
-        height="395"
-        loading="eager"
-        decoding="async">
+      <img src="../assets/title_anonymized.png"
+           alt="Overview of VCDF-X dataset: manipulation types, generation methods, extracted modalities, demographic distributions, and real vs. fake examples"
+           class="figure-full" width="1024" height="395" loading="eager" decoding="async">
     </figure>
-    <p class="teaser-caption">
-      <strong>Figure 1.</strong> Overview of VCDF-X: multimodal signals, generation pipelines, demographic coverage, and representative real/fake samples.
+    <p class="figure-caption">
+      <strong>Figure 1.</strong> Overview of our VCDF-X dataset. VCDF-X shows advantages in AU diversity, age distribution, and emotional variety.
     </p>
   </div>
 </section>
@@ -358,118 +499,73 @@
   <div class="container is-max-desktop">
     <h2 class="section-heading">Abstract</h2>
     <div class="content">
-      <p>We introduce <strong>VCDF-X</strong>, he first multimodal and
-explainable video conferencing deepfake dataset and benchmark,
-comprising over 10,000 videos synthesized by seven state-of-the-art
-generation pipelines spanning portrait animation (LiveAvatar, OVI,
-SadTalker), face swap (FaceFusion, DeepLiveCam, VisoMaster), and
-identity-driven generation (Dream-ID), with virtual background
-augmentation to faithfully emulate real-world conferencing conditions. </p>
-      <p>The defining contribution of <strong>VCDF-X</strong> ois its explainability-first annotation framework: every sample is paired with pixel-level
-manipulation masks, natural language forgery descriptions, facial
-action units (FAUs), eye gaze trajectories, depth maps, face mesh
-and contour geometry, and remote photoplethysmography (rPPG)
-signals - the richest per-sample annotation stack in the deepfake
-detection literature. This multimodal grounding enables not only stronger detection, but transparent, human-interpretable reasoning
-about forgery evidence. </p>
-      <p>We scope <strong>VCDF-X</strong> to the visual modality, reflecting how real-world conferencing deepfake tools operate.
-Building on these modalities, we propose a novel explainable multimodal detector that fuses physiological, geometric, appearance, and
-semantic cues, and present a comprehensive benchmark evaluating
-state-of-the-art detectors under in-distribution, cross-method, and
-cross-background generalization settings. </p>
+      <p>The rise of AI-driven live impersonation in video conferencing poses a severe threat that current detection methods are ill-equipped to address. Existing deepfake datasets target social media and broadcast content, leaving the conferencing domain critically underserved by reflecting codec compression, constrained head dynamics, and virtual background conditions of platforms like Zoom and Teams. We introduce <strong>VCDF-X</strong>, the first multimodal video conferencing deepfake dataset and benchmark, comprising over 10,000 videos synthesized by nine state-of-the-art generation pipelines spanning portrait animation (LiveAvatar, SadTalker), face swap (Inswapper + GFPGAN, Hyper-swap + GFPGAN, FaceFusion, VisoMaster), and identity-driven generation (OVI, Dream-ID, LTX-2), with virtual background augmentation to faithfully emulate real-world conferencing conditions.</p>
+      <p>The defining contribution of <strong>VCDF-X</strong> is its explainability-first annotation framework: every sample is paired with pixel-level manipulation masks, natural language forgery descriptions, facial action units (FAUs), eye gaze trajectories, depth maps, face mesh and contour geometry, and remote photoplethysmography (rPPG) signals &mdash; the richest per-sample annotation set in the deepfake detection literature. Due to the rich modality supplemental materials, one can infer explainable results by building a comprehensive multimodal detector that fuses physiological, geometric, appearance, and semantic cues.</p>
+      <p><strong>VCDF-X</strong>, annotations, and evaluation code will be publicly released to advance robust and interpretable deepfake detection research.</p>
     </div>
   </div>
 </section>
 
-<!-- VIDEO -->
-<!--
+<!-- INTRODUCTION -->
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="section-heading">Video</h2>
-    <div class="video-wrapper">
-
-      <div class="video-placeholder">
-        <i class="fab fa-youtube"></i>
-        <span>Add your YouTube embed URL</span>
-      </div>
-    </div>
-  </div>
-</section>
--->     <!-- Replace with: <iframe src="https://www.youtube.com/embed/YOUR_ID" allowfullscreen></iframe> -->
-
-<!-- METHOD -->
-<section class="section is-light">
-  <div class="container is-max-desktop">
-    <h2 class="section-heading">Method</h2>
-    <div style="background:#e8e8e8; border:1px solid #ddd; border-radius:6px; aspect-ratio:16/6; display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem;">
-      <span style="color:#aaa; font-size:0.9rem;">Replace with your pipeline / architecture diagram</span>
-    </div>
+    <h2 class="section-heading">Introduction</h2>
     <div class="content">
-      <p><strong>Overview.</strong> Given [input], our method produces [output] via a three-stage pipeline.
-      We first [Stage 1]. Then [Stage 2]. Finally, [Stage 3] to produce the final output.</p>
-      <p>The core insight is [key idea], allowing us to [advantage] without [costly step],
-      contrasting with [prior work] which requires [expensive/brittle requirement].</p>
+      <p>The integrity of human identity in digital communication faces a new threat: real-time deepfake tools. These can replace a person's face during a video call with millisecond latency and are now accessible to non-experts. High-profile cases of AI-assisted fraud in video conferences &mdash; such as impersonation in interviews, onboarding, and financial calls &mdash; highlight a growing vulnerability. Unlike social media deepfakes, which are passive, conferencing deepfakes are <em>live, targeted attacks</em>, requiring a new approach for detection.</p>
+      <p>Despite substantial progress driven by foundational benchmarks (e.g., FaceForensics++, Celeb-DF, DFDC), existing datasets focus on broadcast and social media. They fail to reflect video conferencing characteristics such as codec compression, constrained frontal head poses, low webcam resolution, and virtual backgrounds. Detectors trained on these benchmarks generalize poorly to the conferencing domain, a gap that threatens their real-world utility precisely where the stakes are highest.</p>
+      <p>We introduce <strong>VCDF-X</strong>, a large-scale multimodal video conferencing deepfake dataset and benchmark comprising videos generated by nine state-of-the-art synthesis pipelines. The defining characteristic of <strong>VCDF-X</strong> is its rich annotation philosophy: each video includes pixel-level forgery masks, natural language evidence descriptions, facial action units, eye gaze trajectories, depth maps, face mesh geometry, and rPPG signals exposing absent physiological activity.</p>
     </div>
-  </div>
-</section>
 
-<!-- RESULTS -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="section-heading">Results</h2>
-    <p style="margin-bottom:1.5rem;">Qualitative comparison with state-of-the-art methods on [Dataset Name].</p>
-    <div class="columns">
-      <div class="column">
-        <div class="result-img-placeholder">Result A</div>
-        <p class="result-caption"><strong>Scene 1.</strong> Description of result.</p>
-      </div>
-      <div class="column">
-        <div class="result-img-placeholder">Result B</div>
-        <p class="result-caption"><strong>Scene 2.</strong> Description of result.</p>
-      </div>
-      <div class="column">
-        <div class="result-img-placeholder">Result C</div>
-        <p class="result-caption"><strong>Scene 3.</strong> Description of result.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- QUANTITATIVE -->
-<section class="section is-light">
-  <div class="container is-max-desktop">
-    <h2 class="section-heading">Quantitative Comparison</h2>
-    <p style="margin-bottom:1.25rem;">Comparison on [Dataset]. Best results are <u>underlined</u>.</p>
+    <!-- Dataset comparison table -->
+    <p class="table-caption"><strong>Table 1.</strong> Comparison of our proposed dataset with existing prominent deepfake datasets. <em>Manipulations</em>: FS (Face Swap), FR (Face Reenactment), TF (Talking Face), AIGC (AI-Generated Content), FE (Face Editing). <em>Meth.</em>: Number of distinct generation algorithms.</p>
     <div style="overflow-x:auto;">
-      <table class="comparison-table">
+      <table class="paper-table">
         <thead>
           <tr>
-            <th style="text-align:left;">Method</th>
-            <th>PSNR ↑</th>
-            <th>SSIM ↑</th>
-            <th>LPIPS ↓</th>
-            <th>FPS ↑</th>
+            <th>Dataset</th>
+            <th>Year</th>
+            <th>Real</th>
+            <th>Fake</th>
+            <th>Subj.</th>
+            <th>Meth.</th>
+            <th>Manipulations</th>
+            <th>Resolution</th>
+            <th style="text-align:left; min-width:160px;">Key Characteristics</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="text-align:left;">Baseline A (CVPR '23)</td>
-            <td>28.4</td><td>0.891</td><td>0.142</td><td>0.3</td>
+            <td>UADFV</td><td>2018</td><td>49</td><td>49</td><td>49</td><td>1</td><td>FR</td><td>~480p</td><td style="text-align:left;">Low realism</td>
           </tr>
           <tr>
-            <td style="text-align:left;">Baseline B (ICCV '23)</td>
-            <td>30.1</td><td>0.912</td><td>0.118</td><td>1.2</td>
+            <td>DF-TIMIT</td><td>2018</td><td>320</td><td>320</td><td>32</td><td>2</td><td>FS</td><td>64&times;64 / 128&times;128</td><td style="text-align:left;">Controlled environment</td>
           </tr>
           <tr>
-            <td style="text-align:left;">Baseline C (NeurIPS '24)</td>
-            <td>31.6</td><td>0.924</td><td>0.101</td><td>8.5</td>
+            <td>FF++</td><td>2019</td><td>1000</td><td>4000</td><td>1000</td><td>4</td><td>FR, FS, NT</td><td>up to 1080p</td><td style="text-align:left;">Multi-method benchmark</td>
+          </tr>
+          <tr>
+            <td>Celeb-DF</td><td>2020</td><td>590</td><td>5639</td><td>59</td><td>1</td><td>FS</td><td>~256&times;256</td><td style="text-align:left;">High visual quality</td>
+          </tr>
+          <tr>
+            <td>DFDC</td><td>2020</td><td>~23K</td><td>~100K</td><td>960</td><td>8</td><td>FS, GAN</td><td>up to 4K</td><td style="text-align:left;">Large-scale, diverse actors</td>
+          </tr>
+          <tr>
+            <td>DeeperForensics</td><td>2020</td><td>~50K</td><td>~10K</td><td>100</td><td>1</td><td>FS</td><td>up to 1920&times;1080</td><td style="text-align:left;">Real-world perturbations</td>
+          </tr>
+          <tr>
+            <td>ForgeryNet</td><td>2021</td><td>~99K</td><td>~121K</td><td>5400+</td><td>15</td><td>FR, FS, FE</td><td>up to 1920&times;1080</td><td style="text-align:left;">Multi-task annotations</td>
+          </tr>
+          <tr>
+            <td>DF40</td><td>2024</td><td>&mdash;</td><td>~100K</td><td>40</td><td>40</td><td>FS, FR, FE, AIGC</td><td>~720p&ndash;1080p</td><td style="text-align:left;">Cross-manipulation</td>
+          </tr>
+          <tr>
+            <td>Zoom-DF</td><td>2022</td><td>~50</td><td>~1500</td><td>&mdash;</td><td>1</td><td>FS, TF</td><td>up to 1080p</td><td style="text-align:left;">Conferencing domain</td>
+          </tr>
+          <tr>
+            <td>Celeb-DF++</td><td>2025</td><td>590</td><td>~53K</td><td>&mdash;</td><td>22</td><td>FS, FR, TF</td><td>512&times;512</td><td style="text-align:left;">Modern benchmark</td>
           </tr>
           <tr class="ours">
-            <td style="text-align:left;"><strong>Ours</strong></td>
-            <td class="best"><u>33.8</u></td>
-            <td class="best"><u>0.947</u></td>
-            <td class="best"><u>0.079</u></td>
-            <td class="best"><u>32.0</u></td>
+            <td><strong>VCDF-X (ours)</strong></td><td><strong>2026</strong></td><td><strong>4151</strong></td><td><strong>9617</strong></td><td><strong>&mdash;</strong></td><td><strong>9</strong></td><td><strong>FR, FS, AIGC</strong></td><td><strong>up to 1920&times;1080</strong></td><td style="text-align:left;"><strong>8 modalities, demographic diversity, modern generative methods</strong></td>
           </tr>
         </tbody>
       </table>
@@ -477,49 +573,328 @@ cross-background generalization settings. </p>
   </div>
 </section>
 
-<!-- BIBTEX -->
-<!--
+<!-- DATASET (wider container so figures have more horizontal room) -->
 <section class="section">
+  <div class="container is-max-widescreen">
+    <h2 class="section-heading">Dataset</h2>
+    <div class="content">
+      <p><strong>VCDF-X</strong> contains 13,768 clips, including 4,151 real and 9,617 fake samples. Real videos were collected from publicly available YouTube content under Creative Commons licenses, focusing on informal, in-the-wild recordings with diverse lighting, camera quality, and subject behavior. The dataset includes heterogeneous resolutions, frame rates, and an average clip length of about 24 seconds.</p>
+      <p>The dataset is intentionally skewed toward synthetic samples to reflect realistic threat scenarios, with most fakes generated by recent high-capacity models such as LiveAvatar (14B) and LTX-2. It covers common communication settings, including video conferencing calls, one-on-one video chats, and selfie-style recordings.</p>
+    </div>
+
+    <!-- Figure 2 -->
+    <figure class="has-text-centered" style="margin:0 0 1.5rem 0;">
+      <img src="../assets/figures/fig2_anonymized.png"
+           alt="Visual comparison of source videos and their synthesized counterparts"
+           class="figure-full" loading="lazy" decoding="async">
+      <p class="figure-caption"><strong>Figure 2.</strong> Visual comparison of source videos and their synthesized counterparts. Selected frames capture diverse real-world conditions &mdash; varying focal lengths, complex backgrounds, and dynamic lighting &mdash; unlike earlier studio-based benchmarks.</p>
+    </figure>
+
+    <!-- Figure 3 -->
+    <figure class="has-text-centered" style="margin:0 0 1.5rem 0;">
+      <img src="../assets/figures/fig3_anonymized.png"
+           alt="Three deepfake generation paradigms in VCDF-X"
+           class="figure-full" style="max-width:500px; margin:0 auto;" loading="lazy" decoding="async">
+      <p class="figure-caption"><strong>Figure 3.</strong> Three deepfake generation paradigms in VCDF-X.</p>
+    </figure>
+
+    <!-- Video carousel: ../assets/videos/1.mp4 .. 6.mp4 -->
+    <div class="video-carousel-wrap">
+      <h3 class="subsection-heading" style="margin-top:1.5rem;">Sample clips</h3>
+      <p class="video-carousel-lead has-text-centered">Representative examples from the dataset.</p>
+      <div class="video-carousel">
+        <div class="swiper video-swiper" aria-roledescription="carousel" aria-label="Sample videos">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><div class="video-slide-inner"><video controls playsinline preload="metadata" src="../assets/videos/1.mp4"></video><p class="video-slide-caption">Clip 1 / 6</p></div></div>
+            <div class="swiper-slide"><div class="video-slide-inner"><video controls playsinline preload="metadata" src="../assets/videos/2.mp4"></video><p class="video-slide-caption">Clip 2 / 6</p></div></div>
+            <div class="swiper-slide"><div class="video-slide-inner"><video controls playsinline preload="metadata" src="../assets/videos/3.mp4"></video><p class="video-slide-caption">Clip 3 / 6</p></div></div>
+            <div class="swiper-slide"><div class="video-slide-inner"><video controls playsinline preload="metadata" src="../assets/videos/4.mp4"></video><p class="video-slide-caption">Clip 4 / 6</p></div></div>
+            <div class="swiper-slide"><div class="video-slide-inner"><video controls playsinline preload="metadata" src="../assets/videos/5.mp4"></video><p class="video-slide-caption">Clip 5 / 6</p></div></div>
+            <div class="swiper-slide"><div class="video-slide-inner"><video controls playsinline preload="metadata" src="../assets/videos/6.mp4"></video><p class="video-slide-caption">Clip 6 / 6</p></div></div>
+          </div>
+          <div class="swiper-pagination video-swiper-pagination"></div>
+          <div class="swiper-button-prev video-swiper-prev" aria-label="Previous video"></div>
+          <div class="swiper-button-next video-swiper-next" aria-label="Next video"></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="subsection-heading">Statistics and Analysis</h3>
+    <div class="content">
+      <p>We quantify demographics, emotions, and facial action units across 13,768 clips (4,151 real, 9,617 fake). Figures below follow that order: first <em>who</em> appears in the data, then <em>how emotion and ethnicity break down</em>, then <em>emotion by gender</em> for real vs. fake, and finally <em>three complementary AU views</em> (aggregate profile, pairwise coupling, and per-unit densities). Use the arrows or the dots below; slides <strong>crossfade</strong> (no sideways drag).</p>
+      <p>At a glance: 7,756 male (56.3%) vs. 6,012 female (43.7%) samples; age from 1 to 88 years (mean 39.37). Eight emotion categories with neutral most frequent (3,680), then happiness, sadness, and surprise. Mean AU25 intensity is higher for fake (0.724) than real (0.648), with similar shifts for AU01 and AU26.</p>
+    </div>
+
+    <div class="statistics-carousel">
+      <div class="swiper statistics-swiper" aria-roledescription="carousel" aria-label="Statistics figures">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide stat-slide--1" role="group" aria-roledescription="slide" aria-label="1 of 5">
+            <div class="stat-slide-inner" style="padding-bottom: 3rem;">
+              <h4 class="stat-slide-title">Demographics and dataset composition</h4>
+              <p class="figure-lead has-text-centered">Age spans a wide range (mean ~39 years); real vs. fake split and gender mix are summarized in the violin and pie panels. This complements the aggregate counts given in the text above.</p>
+              <div class="columns is-vcentered stat-slide-columns">
+                <div class="column">
+                  <figure class="has-text-centered" style="margin:0;">
+                    <img src="../assets/figures/violin_pie.png"
+                         alt="Dataset distributions: age, composition, gender"
+                         class="figure-full" loading="lazy" decoding="async">
+                    <p class="figure-caption"><strong>Figure 4.</strong> Dataset distributions (age, composition, gender).</p>
+                  </figure>
+                </div>
+                <div class="column">
+                  <figure class="has-text-centered" style="margin:0;">
+                    <img src="../assets/figures/emotion_enth_hist.png"
+                         alt="Emotion and ethnicity distributions"
+                         class="figure-full" loading="lazy" decoding="async">
+                    <p class="figure-caption" style="margin-bottom: 1rem;"><strong>Figure 5.</strong> Emotion and ethnicity distributions.</p>
+                  </figure>
+                </div>
+              </div>
+              <div aria-hidden="true" style="height: 32px;"></div>
+            </div>
+          </div>
+
+          <div class="swiper-slide stat-slide--2" role="group" aria-roledescription="slide" aria-label="2 of 5">
+            <div class="stat-slide-inner" style="padding-top: 1.5rem;">
+              <div aria-hidden="true" style="height: 24px;"></div>
+              <h4 class="stat-slide-title">Emotion vs. gender (real and fake)</h4>
+              <p class="figure-lead has-text-centered">The next figure cross-tabulates the eight emotion categories with female/male labels separately for authentic and synthetic clips. Blue vs. red palettes keep the two strata visually distinct; higher cell values under fake reflect the larger fake set, not a direct probability map.</p>
+              <figure class="has-text-centered stat-slide-figure-gap" style="margin-top: 2rem;">
+                <img src="../assets/figures/emotion_gender_heatmap.png"
+                     alt="Emotion versus gender heatmaps for real (blue) and fake (red) strata in VCDF-X"
+                     class="figure-full" loading="lazy" decoding="async">
+                <p class="figure-caption"><strong>Figure 6.</strong> Emotion vs. gender counts: real (left, blue scale) and fake (right, red scale). Neutral and happiness dominate; fake stratum has higher overall counts per cell.</p>
+              </figure>
+            </div>
+          </div>
+
+          <div class="swiper-slide stat-slide--3" role="group" aria-roledescription="slide" aria-label="3 of 5">
+            <div class="stat-slide-inner">
+              <h4 class="stat-slide-title">Facial action units: mean intensity profile</h4>
+              <p class="figure-lead has-text-centered">ME-GraphAU estimates frame-level AU intensities; we compare mean intensity of the ten most informative units between strata. Elevated fake response around the mouth and brows (e.g. AU25, AU01, AU26) aligns with speech and expression artifacts common in generative pipelines.</p>
+              <figure class="has-text-centered" style="margin:0.75rem 0 0 0;">
+                <img src="../assets/figures/au_radar.png"
+                     alt="Radar chart of mean intensity for top 10 facial action units, real vs fake"
+                     class="figure-center-narrow" loading="lazy" decoding="async">
+                <p class="figure-caption"><strong>Figure 7.</strong> Mean intensity of the top 10 action units (real vs. fake). Fake samples tend to show higher activation on AU25, AU01, AU11, AU26, and AU14.</p>
+              </figure>
+            </div>
+          </div>
+
+          <div class="swiper-slide stat-slide--4" role="group" aria-roledescription="slide" aria-label="4 of 5">
+            <div class="stat-slide-inner" style="padding-bottom: 3rem;">
+              <h4 class="stat-slide-title">Pairwise coupling between action units</h4>
+              <p class="figure-lead has-text-centered">Correlation matrices over the top 15 AUs reveal whether muscle groups co-vary as in real faces. Global structure is similar, but local patches (e.g. AU25&ndash;AU26) can differ, suggesting imperfect preservation of natural co-articulation in fakes.</p>
+              <figure class="has-text-centered" style="margin:0.75rem 0 0 0;">
+                <img src="../assets/figures/au_correlation_heatmaps.png"
+                     alt="Top 15 facial action unit correlation matrices for real and fake videos"
+                     class="figure-full" loading="lazy" decoding="async">
+                <p class="figure-caption" style="margin-bottom: 1rem;"><strong>Figure 8.</strong> Pairwise correlation of the top 15 AUs: real (left) vs. fake (right). Overall structure is similar; subtle differences (e.g. AU25&ndash;AU26) indicate altered co-activation in synthetic faces.</p>
+              </figure>
+              <div aria-hidden="true" style="height: 32px;"></div>
+            </div>
+          </div>
+
+          <div class="swiper-slide stat-slide--5" role="group" aria-roledescription="slide" aria-label="5 of 5">
+            <div class="stat-slide-inner" style="padding-top: 1.5rem;">
+              <div aria-hidden="true" style="height: 24px;"></div>
+              <h4 class="stat-slide-title">Per-AU intensity densities</h4>
+              <p class="figure-lead has-text-centered">Kernel density plots for six representative units show where real and fake mass diverge on the [0,1] intensity scale. Sharp fake peaks at full AU25 intensity and right-shifted AU01 are consistent with the radar summary; near-overlap on AU17 indicates limits of single-AU cues.</p>
+              <figure class="has-text-centered stat-slide-figure-gap" style="margin-top: 2rem;">
+                <img src="../assets/figures/top_au_kde_grid.png"
+                     alt="Kernel density of mean AU intensity for six action units, real versus fake"
+                     class="figure-full" loading="lazy" decoding="async">
+                <p class="figure-caption"><strong>Figure 9.</strong> KDE of mean AU intensity (six representative units). Fake shifts mass (e.g. sharper peak at AU25=1.0; AU01 shifted right); AU17 largely overlaps, showing limited discriminability.</p>
+              </figure>
+            </div>
+          </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev" aria-label="Previous slide"></div>
+        <div class="swiper-button-next" aria-label="Next slide"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENCHMARK -->
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading">Benchmark</h2>
+
+    <div class="content">
+      <p>We evaluate on FF++, CelebDF, and <strong>VCDF-X</strong> with an 80/10/10 split and <em>T</em>=32 frames at 224&times;224. Baselines include ResNet-50, ViT, Swin, <strong>MDF</strong> (FAU + rPPG fusion), and <strong>MMGUnet</strong> (RGB + FFT + STFT [&plus; landmarks]). We report F1 (macro) and AUC for in-domain and cross-dataset settings.</p>
+    </div>
+
+    <!-- Table 2: Combined performance -->
+    <p class="table-caption"><strong>Table 2.</strong> Combined performance comparison across models and datasets.</p>
+    <div style="overflow-x:auto;">
+      <table class="paper-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Modalities</th>
+            <th>Train</th>
+            <th>Test</th>
+            <th>AUC</th>
+            <th>F1</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="section-row"><td colspan="6"><strong>A. Baseline comparison on VCDF-X</strong></td></tr>
+          <tr>
+            <td>ResNet-50</td><td>RGB</td><td>VCDF-X</td><td>VCDF-X</td><td>0.974</td><td class="best">0.975</td>
+          </tr>
+          <tr>
+            <td>MViT-V2-Small</td><td>RGB</td><td>VCDF-X</td><td>VCDF-X</td><td>0.855</td><td>0.906</td>
+          </tr>
+          <tr>
+            <td>ViT-Base</td><td>RGB</td><td>VCDF-X</td><td>VCDF-X</td><td>0.976</td><td>0.941</td>
+          </tr>
+          <tr>
+            <td>Swin-V2-Base</td><td>RGB</td><td>VCDF-X</td><td>VCDF-X</td><td class="best">0.997</td><td class="best">0.975</td>
+          </tr>
+          <tr>
+            <td>MDF</td><td>FAU+rPPG</td><td>VCDF-X</td><td>VCDF-X</td><td>0.980</td><td>0.907</td>
+          </tr>
+          <tr>
+            <td>MMGUnet</td><td>RGB+FFT+STFT</td><td>VCDF-X</td><td>VCDF-X</td><td>0.983</td><td>0.950</td>
+          </tr>
+
+          <tr class="section-row"><td colspan="6"><strong>B. MDF cross-dataset study</strong></td></tr>
+          <tr>
+            <td rowspan="2">MDF</td><td rowspan="2">RGB+FAU+rPPG</td><td>FF++</td><td>FF++</td><td>0.976</td><td>0.862</td>
+          </tr>
+          <tr>
+            <td>CelebDF</td><td>CelebDF</td><td>0.999</td><td>0.960</td>
+          </tr>
+          <tr>
+            <td rowspan="3">MDF</td><td rowspan="3">RGB+FAU+rPPG</td><td>VCDF-X, FF++, CelebDF</td><td>FF++</td><td>0.935</td><td>0.808</td>
+          </tr>
+          <tr>
+            <td>VCDF-X, FF++, CelebDF</td><td>CelebDF</td><td class="best">0.998</td><td>0.981</td>
+          </tr>
+          <tr>
+            <td>VCDF-X, FF++, CelebDF</td><td>VCDF-X</td><td>0.975</td><td>0.907</td>
+          </tr>
+
+          <tr class="section-row"><td colspan="6"><strong>C. MMGUnet modality &amp; generalization study</strong></td></tr>
+          <tr>
+            <td rowspan="3">MMGUnet</td><td rowspan="3">RGB+FFT+STFT</td><td>VCDF-X, FF++, CelebDF</td><td>FF++</td><td class="best">0.937</td><td class="best">0.945</td>
+          </tr>
+          <tr>
+            <td>VCDF-X, FF++, CelebDF</td><td>CelebDF</td><td>0.993</td><td>0.987</td>
+          </tr>
+          <tr>
+            <td>VCDF-X, FF++, CelebDF</td><td>VCDF-X</td><td>0.972</td><td>0.932</td>
+          </tr>
+          <tr>
+            <td rowspan="3">MMGUnet</td><td rowspan="3">RGB+FFT+STFT+LM</td><td>VCDF-X, FF++, CelebDF</td><td>FF++</td><td>0.933</td><td>0.944</td>
+          </tr>
+          <tr>
+            <td>VCDF-X, FF++, CelebDF</td><td>CelebDF</td><td>0.993</td><td class="best">0.988</td>
+          </tr>
+          <tr>
+            <td>VCDF-X, FF++, CelebDF</td><td>VCDF-X</td><td class="best">0.999</td><td class="best">0.993</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- SOTA COMPARISON TABLE -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading">State-of-the-Art Comparison</h2>
+    <p class="table-caption"><strong>Table 3.</strong> Performance comparison of state-of-the-art deepfake detection methods across multiple benchmark datasets (AUC %).</p>
+    <div style="overflow-x:auto;">
+      <table class="paper-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Year</th>
+            <th>Backbone</th>
+            <th>CDF</th>
+            <th>DFD</th>
+            <th>DFDC</th>
+            <th>FF++</th>
+            <th>FFIW</th>
+            <th>DF40</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>LipForensics</td><td>2021</td><td>ResNet-18</td><td>82.4</td><td>&mdash;</td><td>73.5</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>FTCN</td><td>2021</td><td>3D ResNet-50</td><td>86.9</td><td>&mdash;</td><td>74.0</td><td>&mdash;</td><td>74.5</td><td>&mdash;</td></tr>
+          <tr><td>RealForensics</td><td>2022</td><td>Modified CSN</td><td>86.9</td><td>&mdash;</td><td>75.9</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>SBI</td><td>2022</td><td>EFNB4</td><td>93.2</td><td>82.7</td><td>72.4</td><td>&mdash;</td><td>84.8</td><td>&mdash;</td></tr>
+          <tr><td>AUNet</td><td>2023</td><td>Xception+ART</td><td>92.8</td><td>99.2</td><td>73.8</td><td>&mdash;</td><td>81.5</td><td>&mdash;</td></tr>
+          <tr><td>StyleDFD</td><td>2024</td><td>3D ResNet-50</td><td>89.0</td><td>96.1</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>LSDA</td><td>2024</td><td>EFNB4</td><td>91.1</td><td>&mdash;</td><td>77.0</td><td>&mdash;</td><td>72.4</td><td>&mdash;</td></tr>
+          <tr><td>LAA-Net</td><td>2024</td><td>EFNB4</td><td>95.4</td><td>98.4</td><td>86.9</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>AltFreezing</td><td>2024</td><td>3D ResNet-50</td><td>89.5</td><td>98.5</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>NACO</td><td>2024</td><td>ViT-B/16</td><td>89.5</td><td>&mdash;</td><td>76.7</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>UniFace</td><td>2024</td><td>ResNet-50</td><td>72.4</td><td>75.1</td><td>68.4</td><td>99.9</td><td>71.2</td><td>78.9</td></tr>
+          <tr><td>RAE</td><td>2024</td><td>ViT-B/16</td><td>95.5</td><td>99.0</td><td>80.2</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>TALL++</td><td>2024</td><td>Swin-B</td><td>92.0</td><td>&mdash;</td><td>78.5</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>ProDet</td><td>2024</td><td>EFNB4</td><td>92.5</td><td>&mdash;</td><td>77.0</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>UDD</td><td>2025</td><td>CLIP ViT-B/16</td><td>93.1</td><td>95.5</td><td>88.1</td><td>97.4</td><td>82.5</td><td>84.6</td></tr>
+          <tr><td>P&amp;P</td><td>2025</td><td>CLIP ViT-L/14</td><td>94.7</td><td>96.5</td><td>84.3</td><td>&mdash;</td><td>92.1</td><td>&mdash;</td></tr>
+          <tr><td>DFD-FCG</td><td>2025</td><td>CLIP ViT-L/14</td><td>95.0</td><td>&mdash;</td><td>81.8</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>ForAda</td><td>2025</td><td>CLIP ViT-L/14</td><td>95.7</td><td>97.2</td><td>87.2</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>Effort</td><td>2025</td><td>CLIP ViT-L/14</td><td>95.6</td><td>96.5</td><td>84.3</td><td>&mdash;</td><td>92.1</td><td>&mdash;</td></tr>
+          <tr><td>GenD (CLIP)</td><td>2025</td><td>CLIP ViT-L/14</td><td>96.0</td><td>97.0</td><td>87.1</td><td>&mdash;</td><td>92.8</td><td>&mdash;</td></tr>
+          <tr><td>GenD (PE)</td><td>2025</td><td>PEcoreL</td><td>95.8</td><td>96.5</td><td>81.6</td><td>&mdash;</td><td>93.3</td><td>&mdash;</td></tr>
+          <tr><td>GenD (DINO)</td><td>2025</td><td>DINOv3 ViT-L/16</td><td>92.2</td><td>96.6</td><td>84.7</td><td>&mdash;</td><td>94.5</td><td>&mdash;</td></tr>
+          <tr><td>PwTF-DVD</td><td>2025</td><td>3D ResNet-50</td><td>89.7</td><td>97.3</td><td>75.2</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>FSFM-BA</td><td>2025</td><td>FSFM</td><td>99.9</td><td>&mdash;</td><td>97.0</td><td>96.0</td><td>&mdash;</td><td>86.2</td></tr>
+          <tr><td>Fusion-SSAT</td><td>2026</td><td>VideoMAE/ViT-L</td><td>82.5</td><td>85.6</td><td>&mdash;</td><td>98.65</td><td>&mdash;</td><td>99.1</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- LIMITATIONS -->
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading">Limitations</h2>
+    <div class="content">
+      <p>Despite its contributions, <strong>VCDF-X</strong> has limitations: future models may produce unseen artifacts, transmission artifacts are only simulated, and some sub-ethnic groups have limited samples. Future work will target live streams with real-time degradation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BIBTEX -->
+<section class="section is-light">
   <div class="container is-max-desktop">
     <h2 class="section-heading">BibTeX</h2>
     <p style="margin-bottom:1rem;">If you find this work useful, please cite:</p>
     <div class="bibtex-container">
-<pre class="bibtex">@inproceedings{authorname2025method,
-  title     = {Your Paper Title: A Novel Approach to Solving Hard Problems},
-  author    = {One, Author and Two, Author and Three, Author and Four, Author},
-  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year      = {2025},
-  url       = {https://arxiv.org/abs/2025.XXXXX}
+<pre class="bibtex">@inproceedings{razzhivina2026vcdfx,
+  title     = {VCDF-X: A Multimodal Explainable Video Conferencing Deepfake Dataset and Benchmark},
+  author    = {Maria Razzhivina and Ilya Orekhovsky and Georgy Pokumin and Daniil Storonkin and Artyom Filatov and Vadim Zenin and Nikita Sidelnikov and Yaroslav Sergaev and Matvey Koltunov and Rituparn Shukla and Petr Ivanov and Maria Shtark and Ilya Makarov and Andrey Savchenko},
+  booktitle = {Proceedings of the 34th ACM International Conference on Multimedia (MM '26)},
+  year      = {2026}
 }</pre>
       <button class="copy-bibtex" onclick="copyBib(this)">Copy</button>
     </div>
   </div>
 </section>
--->
-
-<!-- ACKNOWLEDGEMENTS -->
-<!--
-<section class="section is-light">
-  <div class="container is-max-desktop">
-    <h2 class="section-heading">Acknowledgements</h2>
-    <div class="content">
-      <p>This work was supported by [Funding Agency] under Grant No. XXXXXXX.
-      We thank [collaborators] for helpful discussions.
-      Compute provided by [institution / cloud provider].
-    </div>
-  </div>
-</section>
--->
 
 <!-- FOOTER -->
 <footer class="footer">
   <div class="content">
-    <p>© 2026 <!--  <a href="#">Paper</a> · <a href="#">Code</a> · <a href="#">arXiv</a>--></p>
+    <p>&copy; 2026 VCDF-X</p>
     <p>Website source adapted from <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies</a>.
     Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</p>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   function copyBib(btn) {
     const pre = btn.previousElementSibling;
@@ -528,6 +903,101 @@ cross-background generalization settings. </p>
       setTimeout(() => btn.textContent = 'Copy', 2000);
     });
   }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof Swiper === 'undefined') return;
+
+    var elStat = document.querySelector('.statistics-swiper');
+    if (elStat) {
+      new Swiper('.statistics-swiper', {
+        loop: false,
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        speed: 450,
+        autoHeight: true,
+        allowTouchMove: false,
+        simulateTouch: false,
+        grabCursor: false,
+        observer: true,
+        observeParents: true,
+        watchSlidesProgress: true,
+        pagination: {
+          el: elStat.querySelector('.swiper-pagination'),
+          clickable: true
+        },
+        navigation: {
+          nextEl: elStat.querySelector('.swiper-button-next'),
+          prevEl: elStat.querySelector('.swiper-button-prev')
+        },
+        keyboard: { enabled: true },
+        a11y: {
+          enabled: true,
+          prevSlideMessage: 'Previous slide',
+          nextSlideMessage: 'Next slide'
+        },
+        on: {
+          init: function () {
+            var self = this;
+            this.updateAutoHeight(0);
+            this.el.querySelectorAll('img').forEach(function (img) {
+              function bump() {
+                self.updateAutoHeight(200);
+              }
+              if (img.complete) return;
+              img.addEventListener('load', bump);
+              img.addEventListener('error', bump);
+            });
+          },
+          slideChange: function () {
+            this.updateAutoHeight(200);
+          },
+          resize: function () {
+            this.updateAutoHeight(0);
+          }
+        }
+      });
+    }
+
+    var elVid = document.querySelector('.video-swiper');
+    if (elVid) {
+      function pauseVideosIn(sw) {
+        sw.el.querySelectorAll('video').forEach(function (v) {
+          v.pause();
+        });
+      }
+      new Swiper('.video-swiper', {
+        loop: false,
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        speed: 400,
+        autoHeight: true,
+        allowTouchMove: false,
+        simulateTouch: false,
+        grabCursor: false,
+        pagination: {
+          el: elVid.querySelector('.video-swiper-pagination'),
+          clickable: true
+        },
+        navigation: {
+          nextEl: elVid.querySelector('.video-swiper-next'),
+          prevEl: elVid.querySelector('.video-swiper-prev')
+        },
+        keyboard: { enabled: true },
+        on: {
+          init: function () {
+            pauseVideosIn(this);
+          },
+          slideChange: function () {
+            pauseVideosIn(this);
+            this.updateAutoHeight(150);
+          },
+          resize: function () {
+            this.updateAutoHeight(0);
+          }
+        }
+      });
+    }
+  });
 </script>
 
 </body>
