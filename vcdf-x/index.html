@@ -111,6 +111,15 @@
       text-align: center;
     }
 
+    .title-infographic {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+    }
+
     /* SECTIONS */
     .section { padding: 3rem 1.5rem; }
     .section.is-light { background-color: #f8f8f8; }
@@ -328,27 +337,18 @@
 <!-- TEASER FIGURE -->
 <section class="section" style="padding-top:0;">
   <div class="container is-max-desktop">
-    <div class="teaser-grid">
-      <div class="teaser-cell">
-        <span>Input</span>
-        <span class="cell-label">source</span>
-      </div>
-      <div class="teaser-cell">
-        <span>Baseline</span>
-        <span class="cell-label">prior method</span>
-      </div>
-      <div class="teaser-cell">
-        <span>Ours</span>
-        <span class="cell-label">our result</span>
-      </div>
-      <div class="teaser-cell">
-        <span>Ground Truth</span>
-        <span class="cell-label">reference</span>
-      </div>
-    </div>
+    <figure class="has-text-centered" style="margin:0;">
+      <img
+        src="../assets/title_anonymized.png"
+        alt="VCDF-X overview: modalities, data manipulation types, generation methods, demographic diversity, and real vs. fake examples"
+        class="title-infographic"
+        width="1024"
+        height="395"
+        loading="eager"
+        decoding="async">
+    </figure>
     <p class="teaser-caption">
-      <strong>Figure 1.</strong> Replace this with your teaser figure. Our method achieves
-      state-of-the-art results with significant improvement over prior baselines.
+      <strong>Figure 1.</strong> Overview of VCDF-X: multimodal signals, generation pipelines, demographic coverage, and representative real/fake samples.
     </p>
   </div>
 </section>
