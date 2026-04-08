@@ -963,6 +963,97 @@
         </tbody>
       </table>
     </div>
+
+    <h3 class="subsection-heading" style="margin-top:2rem;">VCDF-X mean <em>P</em>(fake) — 3-modal checkpoint</h3>
+    <div class="content">
+      <p>Additional analysis on the same VCDF-X split (<em>n</em> = 2,383; real = 1,368, fake = 1,015) using the <strong>3-modal</strong> checkpoint: mean predicted <em>P</em>(fake) per group, stratified by ground-truth label (real vs. fake). This complements the AUC/F1 ablations above.</p>
+    </div>
+
+    <p class="table-caption"><strong>Table 6.</strong> Mean <em>P</em>(fake) by emotion — <strong>real</strong> videos only.</p>
+    <div style="overflow-x:auto;">
+      <table class="paper-table">
+        <thead>
+          <tr>
+            <th>Emotion</th>
+            <th>Mean <em>P</em>(fake)</th>
+            <th><em>n</em></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Anger</td><td>0.2246</td><td>180</td></tr>
+          <tr><td>Contempt</td><td>0.2434</td><td>96</td></tr>
+          <tr><td>Disgust</td><td>0.2293</td><td>92</td></tr>
+          <tr><td>Fear</td><td>0.3199</td><td>33</td></tr>
+          <tr><td>Happiness</td><td>0.2539</td><td>193</td></tr>
+          <tr><td>Neutral</td><td>0.257</td><td>406</td></tr>
+          <tr><td>Sadness</td><td>0.2913</td><td>167</td></tr>
+          <tr><td>Surprise</td><td>0.2445</td><td>201</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="table-caption"><strong>Table 7.</strong> Mean <em>P</em>(fake) by emotion — <strong>fake</strong> videos only.</p>
+    <div style="overflow-x:auto;">
+      <table class="paper-table">
+        <thead>
+          <tr>
+            <th>Emotion</th>
+            <th>Mean <em>P</em>(fake)</th>
+            <th><em>n</em></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Anger</td><td>0.7923</td><td>147</td></tr>
+          <tr><td>Contempt</td><td>0.8336</td><td>24</td></tr>
+          <tr><td>Disgust</td><td>0.8437</td><td>60</td></tr>
+          <tr><td>Fear</td><td>0.7413</td><td>84</td></tr>
+          <tr><td>Happiness</td><td>0.7834</td><td>157</td></tr>
+          <tr><td>Neutral</td><td>0.8139</td><td>251</td></tr>
+          <tr><td>Sadness</td><td>0.7666</td><td>205</td></tr>
+          <tr><td>Surprise</td><td>0.8174</td><td>87</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="table-caption"><strong>Table 8.</strong> Mean <em>P</em>(fake) by ethnicity — <strong>real</strong> videos only.</p>
+    <div style="overflow-x:auto;">
+      <table class="paper-table">
+        <thead>
+          <tr>
+            <th>Ethnicity</th>
+            <th>Mean <em>P</em>(fake)</th>
+            <th><em>n</em></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Asian</td><td>0.2768</td><td>106</td></tr>
+          <tr><td>Black</td><td>0.2815</td><td>95</td></tr>
+          <tr><td>Indian</td><td>0.3449</td><td>26</td></tr>
+          <tr><td>Latino or Middle Eastern</td><td>0.2837</td><td>7</td></tr>
+          <tr><td>White</td><td>0.2465</td><td>1134</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="table-caption"><strong>Table 9.</strong> Mean <em>P</em>(fake) by ethnicity — <strong>fake</strong> videos only.</p>
+    <div style="overflow-x:auto;">
+      <table class="paper-table">
+        <thead>
+          <tr>
+            <th>Ethnicity</th>
+            <th>Mean <em>P</em>(fake)</th>
+            <th><em>n</em></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Asian</td><td>0.7738</td><td>143</td></tr>
+          <tr><td>Black</td><td>0.8013</td><td>196</td></tr>
+          <tr><td>Indian</td><td>0.8684</td><td>56</td></tr>
+          <tr><td>Latino or Middle Eastern</td><td>0.8166</td><td>4</td></tr>
+          <tr><td>White</td><td>0.7878</td><td>616</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 
@@ -970,7 +1061,7 @@
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="section-heading">State-of-the-Art Comparison</h2>
-    <p class="table-caption"><strong>Table 6.</strong> Performance comparison of state-of-the-art deepfake detection methods across multiple benchmark datasets (AUC %).</p>
+    <p class="table-caption"><strong>Table 10.</strong> Performance comparison of state-of-the-art deepfake detection methods across multiple benchmark datasets (AUC %).</p>
     <div style="overflow-x:auto;">
       <table class="paper-table">
         <thead>
