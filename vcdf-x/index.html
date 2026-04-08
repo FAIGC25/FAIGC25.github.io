@@ -511,9 +511,11 @@
             <span class="author-block"><sup>6</sup>AIRI</span>
           </div>
 
+          <!--
           <div style="margin-top:0.75rem;">
             <span class="publication-venue">ACM Multimedia 2026</span>
           </div>
+          -->
 
           <div class="publication-links">
             <!--
@@ -870,11 +872,105 @@
   </div>
 </section>
 
+<!-- ABLATION -->
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading">Ablation</h2>
+    <div class="content">
+      <p>We compare a <strong>four-modal</strong> configuration against a <strong>three-modal</strong> variant on the same evaluation split (<em>n</em> = 2,383 videos). Metrics are reported as AUC and macro F1; per-group thresholds are tuned on validation where applicable.</p>
+    </div>
+
+    <p class="table-caption"><strong>Table 3.</strong> Overall ablation: four-modal vs. three-modal.</p>
+    <div style="overflow-x:auto;">
+      <table class="paper-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>4-modal AUC</th>
+            <th>4-modal F1</th>
+            <th>3-modal AUC</th>
+            <th>3-modal F1</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>overall</td>
+            <td>0.2719</td>
+            <td>0.1495</td>
+            <td>0.9677</td>
+            <td>0.8944</td>
+          </tr>
+          <tr>
+            <td>n_videos</td>
+            <td>2383</td>
+            <td>&mdash;</td>
+            <td>2383</td>
+            <td>&mdash;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="table-caption"><strong>Table 4.</strong> Ablation by ethnicity (AUC / F1 / decision threshold; <em>n</em> = group size).</p>
+    <div style="overflow-x:auto;">
+      <table class="paper-table">
+        <thead>
+          <tr>
+            <th>Ethnicity</th>
+            <th>4-modal AUC</th>
+            <th>4-modal F1</th>
+            <th>4-modal thr.</th>
+            <th>n</th>
+            <th>3-modal AUC</th>
+            <th>3-modal F1</th>
+            <th>3-modal thr.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Asian</td><td>0.2324</td><td>0.1279</td><td>0.1</td><td>249</td><td>0.9478</td><td>0.9191</td><td>0.58</td></tr>
+          <tr><td>Black</td><td>0.36</td><td>0.2419</td><td>0.1</td><td>291</td><td>0.9633</td><td>0.9433</td><td>0.46</td></tr>
+          <tr><td>Indian</td><td>0.3702</td><td>0.2571</td><td>0.1</td><td>82</td><td>0.9904</td><td>0.9649</td><td>0.62</td></tr>
+          <tr><td>Latino or Middle Eastern</td><td>0.5</td><td>0.4</td><td>0.1</td><td>11</td><td>0.9286</td><td>0.8889</td><td>0.46</td></tr>
+          <tr><td>White</td><td>0.2323</td><td>0.1146</td><td>0.1</td><td>1750</td><td>0.9702</td><td>0.8791</td><td>0.6</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="table-caption"><strong>Table 5.</strong> Ablation by emotion (AUC / F1 / decision threshold; <em>n</em> = group size).</p>
+    <div style="overflow-x:auto;">
+      <table class="paper-table">
+        <thead>
+          <tr>
+            <th>Emotion</th>
+            <th>4-modal AUC</th>
+            <th>4-modal F1</th>
+            <th>4-modal thr.</th>
+            <th>n</th>
+            <th>3-modal AUC</th>
+            <th>3-modal F1</th>
+            <th>3-modal thr.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Anger</td><td>0.2504</td><td>0.1215</td><td>0.1</td><td>327</td><td>0.9739</td><td>0.9145</td><td>0.48</td></tr>
+          <tr><td>Contempt</td><td>0.2118</td><td>0.0645</td><td>0.1</td><td>120</td><td>0.997</td><td>0.9412</td><td>0.66</td></tr>
+          <tr><td>Disgust</td><td>0.3409</td><td>0.1471</td><td>0.1</td><td>152</td><td>0.9944</td><td>0.9587</td><td>0.6</td></tr>
+          <tr><td>Fear</td><td>0.1807</td><td>0.1064</td><td>0.1</td><td>117</td><td>0.9087</td><td>0.8994</td><td>0.4</td></tr>
+          <tr><td>Happiness</td><td>0.2261</td><td>0.0874</td><td>0.1</td><td>350</td><td>0.9656</td><td>0.8841</td><td>0.52</td></tr>
+          <tr><td>Neutral</td><td>0.3442</td><td>0.2222</td><td>0.1</td><td>657</td><td>0.971</td><td>0.9143</td><td>0.62</td></tr>
+          <tr><td>Sadness</td><td>0.2314</td><td>0.1569</td><td>0.1</td><td>372</td><td>0.943</td><td>0.8792</td><td>0.48</td></tr>
+          <tr><td>Surprise</td><td>0.2916</td><td>0.1026</td><td>0.1</td><td>288</td><td>0.9843</td><td>0.9176</td><td>0.64</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <!-- SOTA COMPARISON TABLE -->
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="section-heading">State-of-the-Art Comparison</h2>
-    <p class="table-caption"><strong>Table 3.</strong> Performance comparison of state-of-the-art deepfake detection methods across multiple benchmark datasets (AUC %).</p>
+    <p class="table-caption"><strong>Table 6.</strong> Performance comparison of state-of-the-art deepfake detection methods across multiple benchmark datasets (AUC %).</p>
     <div style="overflow-x:auto;">
       <table class="paper-table">
         <thead>
@@ -888,34 +984,38 @@
             <th>FF++</th>
             <th>FFIW</th>
             <th>DF40</th>
+            <th>VCDF-X</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>LipForensics</td><td>2021</td><td>ResNet-18</td><td>82.4</td><td>&mdash;</td><td>73.5</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-          <tr><td>FTCN</td><td>2021</td><td>3D ResNet-50</td><td>86.9</td><td>&mdash;</td><td>74.0</td><td>&mdash;</td><td>74.5</td><td>&mdash;</td></tr>
-          <tr><td>RealForensics</td><td>2022</td><td>Modified CSN</td><td>86.9</td><td>&mdash;</td><td>75.9</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-          <tr><td>SBI</td><td>2022</td><td>EFNB4</td><td>93.2</td><td>82.7</td><td>72.4</td><td>&mdash;</td><td>84.8</td><td>&mdash;</td></tr>
-          <tr><td>AUNet</td><td>2023</td><td>Xception+ART</td><td>92.8</td><td>99.2</td><td>73.8</td><td>&mdash;</td><td>81.5</td><td>&mdash;</td></tr>
-          <tr><td>StyleDFD</td><td>2024</td><td>3D ResNet-50</td><td>89.0</td><td>96.1</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-          <tr><td>LSDA</td><td>2024</td><td>EFNB4</td><td>91.1</td><td>&mdash;</td><td>77.0</td><td>&mdash;</td><td>72.4</td><td>&mdash;</td></tr>
-          <tr><td>LAA-Net</td><td>2024</td><td>EFNB4</td><td>95.4</td><td>98.4</td><td>86.9</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-          <tr><td>AltFreezing</td><td>2024</td><td>3D ResNet-50</td><td>89.5</td><td>98.5</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-          <tr><td>NACO</td><td>2024</td><td>ViT-B/16</td><td>89.5</td><td>&mdash;</td><td>76.7</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-          <tr><td>UniFace</td><td>2024</td><td>ResNet-50</td><td>72.4</td><td>75.1</td><td>68.4</td><td>99.9</td><td>71.2</td><td>78.9</td></tr>
-          <tr><td>RAE</td><td>2024</td><td>ViT-B/16</td><td>95.5</td><td>99.0</td><td>80.2</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-          <tr><td>TALL++</td><td>2024</td><td>Swin-B</td><td>92.0</td><td>&mdash;</td><td>78.5</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-          <tr><td>ProDet</td><td>2024</td><td>EFNB4</td><td>92.5</td><td>&mdash;</td><td>77.0</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-          <tr><td>UDD</td><td>2025</td><td>CLIP ViT-B/16</td><td>93.1</td><td>95.5</td><td>88.1</td><td>97.4</td><td>82.5</td><td>84.6</td></tr>
-          <tr><td>P&amp;P</td><td>2025</td><td>CLIP ViT-L/14</td><td>94.7</td><td>96.5</td><td>84.3</td><td>&mdash;</td><td>92.1</td><td>&mdash;</td></tr>
-          <tr><td>DFD-FCG</td><td>2025</td><td>CLIP ViT-L/14</td><td>95.0</td><td>&mdash;</td><td>81.8</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-          <tr><td>ForAda</td><td>2025</td><td>CLIP ViT-L/14</td><td>95.7</td><td>97.2</td><td>87.2</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-          <tr><td>Effort</td><td>2025</td><td>CLIP ViT-L/14</td><td>95.6</td><td>96.5</td><td>84.3</td><td>&mdash;</td><td>92.1</td><td>&mdash;</td></tr>
-          <tr><td>GenD (CLIP)</td><td>2025</td><td>CLIP ViT-L/14</td><td>96.0</td><td>97.0</td><td>87.1</td><td>&mdash;</td><td>92.8</td><td>&mdash;</td></tr>
-          <tr><td>GenD (PE)</td><td>2025</td><td>PEcoreL</td><td>95.8</td><td>96.5</td><td>81.6</td><td>&mdash;</td><td>93.3</td><td>&mdash;</td></tr>
-          <tr><td>GenD (DINO)</td><td>2025</td><td>DINOv3 ViT-L/16</td><td>92.2</td><td>96.6</td><td>84.7</td><td>&mdash;</td><td>94.5</td><td>&mdash;</td></tr>
-          <tr><td>PwTF-DVD</td><td>2025</td><td>3D ResNet-50</td><td>89.7</td><td>97.3</td><td>75.2</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-          <tr><td>FSFM-BA</td><td>2025</td><td>FSFM</td><td>99.9</td><td>&mdash;</td><td>97.0</td><td>96.0</td><td>&mdash;</td><td>86.2</td></tr>
-          <tr><td>Fusion-SSAT</td><td>2026</td><td>VideoMAE/ViT-L</td><td>82.5</td><td>85.6</td><td>&mdash;</td><td>98.65</td><td>&mdash;</td><td>99.1</td></tr>
+          <tr><td>LipForensics</td><td>2021</td><td>ResNet-18</td><td>82.4</td><td>&mdash;</td><td>73.5</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>FTCN</td><td>2021</td><td>3D ResNet-50</td><td>86.9</td><td>&mdash;</td><td>74.0</td><td>&mdash;</td><td>74.5</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>RealForensics</td><td>2022</td><td>Modified CSN</td><td>86.9</td><td>&mdash;</td><td>75.9</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>SBI</td><td>2022</td><td>EFNB4</td><td>93.2</td><td>82.7</td><td>72.4</td><td>&mdash;</td><td>84.8</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>AUNet</td><td>2023</td><td>Xception+ART</td><td>92.8</td><td>99.2</td><td>73.8</td><td>&mdash;</td><td>81.5</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>StyleDFD</td><td>2024</td><td>3D ResNet-50</td><td>89.0</td><td>96.1</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>LSDA</td><td>2024</td><td>EFNB4</td><td>91.1</td><td>&mdash;</td><td>77.0</td><td>&mdash;</td><td>72.4</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>LAA-Net</td><td>2024</td><td>EFNB4</td><td>95.4</td><td>98.4</td><td>86.9</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>AltFreezing</td><td>2024</td><td>3D ResNet-50</td><td>89.5</td><td>98.5</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>NACO</td><td>2024</td><td>ViT-B/16</td><td>89.5</td><td>&mdash;</td><td>76.7</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>UniFace</td><td>2024</td><td>ResNet-50</td><td>72.4</td><td>75.1</td><td>68.4</td><td>99.9</td><td>71.2</td><td>78.9</td><td>&mdash;</td></tr>
+          <tr><td>RAE</td><td>2024</td><td>ViT-B/16</td><td>95.5</td><td>99.0</td><td>80.2</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>TALL++</td><td>2024</td><td>Swin-B</td><td>92.0</td><td>&mdash;</td><td>78.5</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>ProDet</td><td>2024</td><td>EFNB4</td><td>92.5</td><td>&mdash;</td><td>77.0</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>SIDA</td><td>2024</td><td>LISA/LLaVA</td><td>94.4</td><td>&mdash;</td><td>&mdash;</td><td>94.7</td><td>&mdash;</td><td>&mdash;</td><td>95.7</td></tr>
+          <tr><td>UDD</td><td>2025</td><td>CLIP ViT-B/16</td><td>93.1</td><td>95.5</td><td>88.1</td><td>97.4</td><td>82.5</td><td>84.6</td><td>&mdash;</td></tr>
+          <tr><td>P&amp;P</td><td>2025</td><td>CLIP ViT-L/14</td><td>94.7</td><td>96.5</td><td>84.3</td><td>&mdash;</td><td>92.1</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>DFD-FCG</td><td>2025</td><td>CLIP ViT-L/14</td><td>95.0</td><td>&mdash;</td><td>81.8</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>ForAda</td><td>2025</td><td>CLIP ViT-L/14</td><td>95.7</td><td>97.2</td><td>87.2</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>Effort</td><td>2025</td><td>CLIP ViT-L/14</td><td>95.6</td><td>96.5</td><td>84.3</td><td>&mdash;</td><td>92.1</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>GenD (CLIP)</td><td>2025</td><td>CLIP ViT-L/14</td><td>96.0</td><td>97.0</td><td>87.1</td><td>&mdash;</td><td>92.8</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>GenD (PE)</td><td>2025</td><td>PEcoreL</td><td>95.8</td><td>96.5</td><td>81.6</td><td>&mdash;</td><td>93.3</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>GenD (DINO)</td><td>2025</td><td>DINOv3 ViT-L/16</td><td>92.2</td><td>96.6</td><td>84.7</td><td>&mdash;</td><td>94.5</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>PwTF-DVD</td><td>2025</td><td>3D ResNet-50</td><td>89.7</td><td>97.3</td><td>75.2</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td>FSFM-BA</td><td>2025</td><td>FSFM</td><td>99.9</td><td>&mdash;</td><td>97.0</td><td>96.0</td><td>&mdash;</td><td>86.2</td><td>&mdash;</td></tr>
+          <tr><td>Fusion-SSAT</td><td>2026</td><td>VideoMAE/ViT-L</td><td>82.5</td><td>85.6</td><td>&mdash;</td><td>98.65</td><td>&mdash;</td><td>99.1</td><td>&mdash;</td></tr>
+          <tr class="ours"><td><strong>MDF</strong></td><td>2026</td><td>&mdash;</td><td>0.998</td><td>&mdash;</td><td>&mdash;</td><td>0.935</td><td>&mdash;</td><td>&mdash;</td><td>0.975</td></tr>
+          <tr class="ours"><td><strong>MMGUnet</strong></td><td>2026</td><td>&mdash;</td><td>0.993</td><td>&mdash;</td><td>&mdash;</td><td>0.933</td><td>&mdash;</td><td>&mdash;</td><td>0.999</td></tr>
         </tbody>
       </table>
     </div>
