@@ -877,99 +877,10 @@
   <div class="container is-max-desktop">
     <h2 class="section-heading">Ablation</h2>
     <div class="content">
-      <p>We compare a <strong>four-modal</strong> configuration against a <strong>three-modal</strong> variant on the same evaluation split (<em>n</em> = 2,383 videos). Metrics are reported as AUC and macro F1; per-group thresholds are tuned on validation where applicable.</p>
+      <p>We report group-wise MMGUnet predictions on the VCDF-X evaluation split (<em>n</em> = 2,383; real = 1,368, fake = 1,015). The tables below summarize mean predicted <em>P</em>(fake) by emotion and ethnicity, stratified by ground-truth label.</p>
     </div>
 
-    <p class="table-caption"><strong>Table 3.</strong> Overall ablation: four-modal vs. three-modal.</p>
-    <div style="overflow-x:auto;">
-      <table class="paper-table">
-        <thead>
-          <tr>
-            <th>Metric</th>
-            <th>4-modal AUC</th>
-            <th>4-modal F1</th>
-            <th>3-modal AUC</th>
-            <th>3-modal F1</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>overall</td>
-            <td>0.2719</td>
-            <td>0.1495</td>
-            <td>0.9677</td>
-            <td>0.8944</td>
-          </tr>
-          <tr>
-            <td>n_videos</td>
-            <td>2383</td>
-            <td>&mdash;</td>
-            <td>2383</td>
-            <td>&mdash;</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p class="table-caption"><strong>Table 4.</strong> Ablation by ethnicity (AUC / F1 / decision threshold; <em>n</em> = group size).</p>
-    <div style="overflow-x:auto;">
-      <table class="paper-table">
-        <thead>
-          <tr>
-            <th>Ethnicity</th>
-            <th>4-modal AUC</th>
-            <th>4-modal F1</th>
-            <th>4-modal thr.</th>
-            <th>n</th>
-            <th>3-modal AUC</th>
-            <th>3-modal F1</th>
-            <th>3-modal thr.</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Asian</td><td>0.2324</td><td>0.1279</td><td>0.1</td><td>249</td><td>0.9478</td><td>0.9191</td><td>0.58</td></tr>
-          <tr><td>Black</td><td>0.36</td><td>0.2419</td><td>0.1</td><td>291</td><td>0.9633</td><td>0.9433</td><td>0.46</td></tr>
-          <tr><td>Indian</td><td>0.3702</td><td>0.2571</td><td>0.1</td><td>82</td><td>0.9904</td><td>0.9649</td><td>0.62</td></tr>
-          <tr><td>Latino or Middle Eastern</td><td>0.5</td><td>0.4</td><td>0.1</td><td>11</td><td>0.9286</td><td>0.8889</td><td>0.46</td></tr>
-          <tr><td>White</td><td>0.2323</td><td>0.1146</td><td>0.1</td><td>1750</td><td>0.9702</td><td>0.8791</td><td>0.6</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p class="table-caption"><strong>Table 5.</strong> Ablation by emotion (AUC / F1 / decision threshold; <em>n</em> = group size).</p>
-    <div style="overflow-x:auto;">
-      <table class="paper-table">
-        <thead>
-          <tr>
-            <th>Emotion</th>
-            <th>4-modal AUC</th>
-            <th>4-modal F1</th>
-            <th>4-modal thr.</th>
-            <th>n</th>
-            <th>3-modal AUC</th>
-            <th>3-modal F1</th>
-            <th>3-modal thr.</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Anger</td><td>0.2504</td><td>0.1215</td><td>0.1</td><td>327</td><td>0.9739</td><td>0.9145</td><td>0.48</td></tr>
-          <tr><td>Contempt</td><td>0.2118</td><td>0.0645</td><td>0.1</td><td>120</td><td>0.997</td><td>0.9412</td><td>0.66</td></tr>
-          <tr><td>Disgust</td><td>0.3409</td><td>0.1471</td><td>0.1</td><td>152</td><td>0.9944</td><td>0.9587</td><td>0.6</td></tr>
-          <tr><td>Fear</td><td>0.1807</td><td>0.1064</td><td>0.1</td><td>117</td><td>0.9087</td><td>0.8994</td><td>0.4</td></tr>
-          <tr><td>Happiness</td><td>0.2261</td><td>0.0874</td><td>0.1</td><td>350</td><td>0.9656</td><td>0.8841</td><td>0.52</td></tr>
-          <tr><td>Neutral</td><td>0.3442</td><td>0.2222</td><td>0.1</td><td>657</td><td>0.971</td><td>0.9143</td><td>0.62</td></tr>
-          <tr><td>Sadness</td><td>0.2314</td><td>0.1569</td><td>0.1</td><td>372</td><td>0.943</td><td>0.8792</td><td>0.48</td></tr>
-          <tr><td>Surprise</td><td>0.2916</td><td>0.1026</td><td>0.1</td><td>288</td><td>0.9843</td><td>0.9176</td><td>0.64</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3 class="subsection-heading" style="margin-top:2rem;">VCDF-X mean <em>P</em>(fake) — 3-modal checkpoint</h3>
-    <div class="content">
-      <p>Additional analysis on the same VCDF-X split (<em>n</em> = 2,383; real = 1,368, fake = 1,015) using the <strong>3-modal</strong> checkpoint: mean predicted <em>P</em>(fake) per group, stratified by ground-truth label (real vs. fake). This complements the AUC/F1 ablations above.</p>
-    </div>
-
-    <p class="table-caption"><strong>Table 6.</strong> Mean <em>P</em>(fake) by emotion — <strong>real</strong> videos only.</p>
+    <p class="table-caption"><strong>Table 3.</strong> Mean <em>P</em>(fake) by emotion — <strong>real</strong> videos only.</p>
     <div style="overflow-x:auto;">
       <table class="paper-table">
         <thead>
@@ -992,7 +903,7 @@
       </table>
     </div>
 
-    <p class="table-caption"><strong>Table 7.</strong> Mean <em>P</em>(fake) by emotion — <strong>fake</strong> videos only.</p>
+    <p class="table-caption"><strong>Table 4.</strong> Mean <em>P</em>(fake) by emotion — <strong>fake</strong> videos only.</p>
     <div style="overflow-x:auto;">
       <table class="paper-table">
         <thead>
@@ -1015,7 +926,7 @@
       </table>
     </div>
 
-    <p class="table-caption"><strong>Table 8.</strong> Mean <em>P</em>(fake) by ethnicity — <strong>real</strong> videos only.</p>
+    <p class="table-caption"><strong>Table 5.</strong> Mean <em>P</em>(fake) by ethnicity — <strong>real</strong> videos only.</p>
     <div style="overflow-x:auto;">
       <table class="paper-table">
         <thead>
@@ -1035,7 +946,7 @@
       </table>
     </div>
 
-    <p class="table-caption"><strong>Table 9.</strong> Mean <em>P</em>(fake) by ethnicity — <strong>fake</strong> videos only.</p>
+    <p class="table-caption"><strong>Table 6.</strong> Mean <em>P</em>(fake) by ethnicity — <strong>fake</strong> videos only.</p>
     <div style="overflow-x:auto;">
       <table class="paper-table">
         <thead>
@@ -1061,7 +972,7 @@
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="section-heading">State-of-the-Art Comparison</h2>
-    <p class="table-caption"><strong>Table 10.</strong> Performance comparison of state-of-the-art deepfake detection methods across multiple benchmark datasets (AUC %).</p>
+    <p class="table-caption"><strong>Table 7.</strong> Performance comparison of state-of-the-art deepfake detection methods across multiple benchmark datasets (AUC %).</p>
     <div style="overflow-x:auto;">
       <table class="paper-table">
         <thead>
